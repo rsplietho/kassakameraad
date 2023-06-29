@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,22 +14,24 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: const HomePage(),
       routes: {
-        '/logo': (context) => LogoPage(),
-        '/directe_verkoop': (context) => DirecteVerkoopPage(),
-        '/number_page': (context) => NumberPage(),
+        '/logo': (context) => const LogoPage(),
+        '/directe_verkoop': (context) => const DirecteVerkoopPage(),
+        '/number_page': (context) => const NumberPage(),
       },
     );
   }
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF5D7791),
+        backgroundColor: const Color(0xFF5D7791),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -35,7 +39,7 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, '/logo');
               },
-              child: Text('Logo'),
+              child: const Text('Logo'),
             ),
           ],
         ),
@@ -50,9 +54,9 @@ class HomePage extends StatelessWidget {
                       Navigator.pushNamed(context, '/directe_verkoop');
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       alignment: Alignment.center,
-                      child: Text('Directe Verkoop'),
+                      child: const Text('Directe Verkoop'),
                     ),
                   ),
                 ),
@@ -74,12 +78,12 @@ class HomePage extends StatelessWidget {
               );
             },
             child: Container(
-              margin: EdgeInsets.all(8.0),
-              color: Color(0xFFD9D9D9),
+              margin: const EdgeInsets.all(8.0),
+              color: const Color(0xFFD9D9D9),
               child: Center(
                 child: Text(
                   (index + 1).toString(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 24.0,
                   ),
@@ -94,13 +98,15 @@ class HomePage extends StatelessWidget {
 }
 
 class LogoPage extends StatelessWidget {
+  const LogoPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Logo Page'),
+        title: const Text('Logo Page'),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'Logo',
           style: TextStyle(fontSize: 24.0),
@@ -111,13 +117,15 @@ class LogoPage extends StatelessWidget {
 }
 
 class DirecteVerkoopPage extends StatelessWidget {
+  const DirecteVerkoopPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Directe Verkoop Page'),
+        title: const Text('Directe Verkoop Page'),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'Directe Verkoop',
           style: TextStyle(fontSize: 24.0),
@@ -128,19 +136,21 @@ class DirecteVerkoopPage extends StatelessWidget {
 }
 
 class NumberPage extends StatelessWidget {
+  const NumberPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as Map;
+    final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final number = args['number'];
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Number Page'),
+        title: const Text('Number Page'),
       ),
       body: Center(
         child: Text(
-          'Number: ${number.toString()}',
-          style: TextStyle(fontSize: 24.0),
+          'Number: $number',
+          style: const TextStyle(fontSize: 24.0),
         ),
       ),
     );
